@@ -1,6 +1,6 @@
-let xp = 0;
-let health = 100;
-let gold = 50;
+let xp =220;
+let health = 10000;
+let gold = 500;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
@@ -44,7 +44,7 @@ const locations = [
         name: "fight",
         "button text":["Attack", "Dodge" , "Run"],
         "button functions": [attack,dodge,goTown],
-        text: "You are fighting a monster!!!",
+        text: "You are fighting a monster!!!" ,
     },
     {
         name: "kill monster",
@@ -110,7 +110,7 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 
-function update(location){;
+function update(location){
     monsterStats.style.display = "none";
     text.innerText =location.text;
     button1.innerText = location["button text"][0];
@@ -181,37 +181,34 @@ function sellWeapon() {
 
 function goCave() {
     update(locations[2]);
-    monsterHealth = monsters[fighting].health;
-    monsterStats.style.display ="block";
-    monsterNameText = monsters[fighting].name;
-    monsterHealthText.innerText = monsterHealth
+    
 }
 
 function fightDragon() {
-fighting = 2;
-goFight();
+    fighting = 2;
+    goFight();
 }
 
 function fightSlime() {
-fighting = 0;
-goFight();
+    fighting = 0;
+    goFight();
 }
 
 function fightBeast() {
-fighting = 1;
-goFight();
+    fighting = 1;
+    goFight();
 }
 
 function goFight(){
-update(locations[3]);
-monsterHealth = monsters[fighting].health;
-monsterStats.style.display ="block";
-monsterNameText = monsters[fighting].name;
-monsterHealthText.innerText = monsterHealth
+    update(locations[3]);
+    monsterHealth = monsters[fighting].health;
+    monsterStats.style.display ="block";
+    monsterNameText.innerText = monsters[fighting].name;
+    monsterHealthText.innerText = monsterHealth
 }
 
 function attack() {
-    text.innerText = `The ${monster[fighting].name} attacks`;
+    text.innerText = `The ${monsters[fighting].name} attacks`;
     text.innerText += ` You attack it with your ${weapons[currentWeapon].name}`;
     health -= monsters[fighting].level;
     monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random()* xp)+1;
@@ -221,12 +218,7 @@ function attack() {
         lose();
     }
     else if (monsterHealth <= 0){
-        if(fighting=== 2){
-            winGame();
-        }
-        else {
-        defeatMonster();
-    }
+        fighting == 2 ? winGame() : defeatMonster();
     }
 }
 
@@ -244,6 +236,10 @@ function defeatMonster() {
 
 function lose () {
     update(locations[5]);
+}
+
+function winGame() {
+    update(location[6]);
 }
 
 function restart () {
