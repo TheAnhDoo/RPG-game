@@ -1,3 +1,13 @@
+#box{
+  background-color: grey;
+  outline: red 1px solid;
+  padding: 250px 200px;
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: 290px;
+  margin-right:450px;
+
+}
 body {
     background-color: darkblue;
   }
@@ -13,7 +23,6 @@ body {
     max-height: 400px;
     background-color: lightgray;
     color: white;
-    margin: 0 auto;
     padding: 10px;
   }
   
